@@ -24,6 +24,18 @@ VRAM	EQU		0x0ff8			; 图像缓冲区的起始地址
 		MOV		WORD [SCRNX],320
 		MOV		WORD [SCRNY],200
 		MOV		DWORD [VRAM],0x000a0000
+		
+		;DS = 0xa000, SI=0, DS : SI=0xa0000
+        MOV BX,DS
+        MOV AX,0xa000
+        MOV DS,AX
+        MOV SI,0
+        draw:
+        MOV [SI],BYTE 15;15 表示白色
+        ADD SI,1
+        CMP SI,320*100;屏幕是 320*200 这里取其一半
+        JBE draw
+        MOV DS,BX
 
 ; 通过BIOS获取指示灯状态
 
