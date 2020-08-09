@@ -84,6 +84,7 @@ void init_palette(void)
 	/* C语言中的static char语句只能用于数据，相当于汇编中的DB指令 */
 }
 
+/* 设置调色板，如果改变这里，输出的颜色会发生改变 */
 void set_palette(int start, int end, unsigned char *rgb)
 {
 	int i, eflags;
