@@ -9,7 +9,7 @@ void io_store_eflags(int eflags);
 void init_palette(void);
 void set_palette(int start, int end, unsigned char *rgb);
 void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, int x1, int y1);
-void init_screen(char *vram, int x, int y);
+void init_screen(char *vram, int x, int y); /* 显示画面背景 */
 void putfont8(char *vram, int xsize, int x, int y, char c, char *font);
 void putfonts8_asc(char *vram, int xsize, int x, int y, char c, unsigned char *s);
 void init_mouse_cursor8(char *mouse, char bc);
@@ -58,7 +58,7 @@ void load_idtr(int limit, int addr);
 
 void HariMain(void)
 {
-	struct BOOTINFO *binfo = (struct BOOTINFO *) 0x0ff0;
+	struct BOOTINFO *binfo = (struct BOOTINFO *) 0x0ff0;/* 0x0ff4之类的地址仅仅是为了与 asmhead. nas 保持一致才出现的 */
 	char s[40], mcursor[256];
 	int mx, my;
 
