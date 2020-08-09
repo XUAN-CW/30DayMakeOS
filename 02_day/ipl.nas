@@ -51,7 +51,7 @@ fin:
 
 msg:
 		DB		0x0a, 0x0a		; 换行两次
-		DB		"hello, world"
+		DB		"hello, world"  ; 修改这里可改变显示的内容
 		DB		0x0a			; 换行
 		DB		0
 
