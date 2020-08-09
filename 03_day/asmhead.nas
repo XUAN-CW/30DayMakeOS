@@ -30,7 +30,7 @@ VRAM	EQU		0x0ff8			; 图像缓冲区的起始地址
         MOV AX,0xa000
         MOV DS,AX
         MOV SI,0
-        draw:
+draw:
         MOV [SI],BYTE 15;15 表示白色
         ADD SI,1
         CMP SI,320*100;屏幕是 320*200 这里取其一半
