@@ -63,7 +63,7 @@ retry:
 		JMP		retry
 next:
 		MOV		AX,ES			; 把内存地址后移0x200（512/16十六进制转换）
-		ADD		AX,0x0020
+		ADD		AX,0x0020       ; 200H 为一个扇区大小，要通过 AX 赋值到 ES 所以是加 20H
 		MOV		ES,AX			; ADD ES,0x020因为没有ADD ES，只能通过AX进行
 		ADD		CL,1			; 往CL里面加1
 		CMP		CL,18			; 比较CL与18
@@ -78,7 +78,7 @@ next:
 		JB		readloop		; CH < CYLS 跳转到readloop
 
 ; 读取完毕，跳转到haribote.sys执行！
-		MOV		[0x0ff0],CH		; IPLがどこまで読んだのかをメモ
+		MOV		[0x0ff0],CH		; asmhead.nas - 引导扇区设置
 		JMP		0xc200
 
 error:
